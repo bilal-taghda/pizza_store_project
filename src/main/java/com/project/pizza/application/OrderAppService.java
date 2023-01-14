@@ -5,6 +5,7 @@ import com.project.pizza.domain.aggregate.User;
 import com.project.pizza.domain.command.ChangeOrderStatusCommand;
 import com.project.pizza.domain.command.PlaceOrderCommand;
 import com.project.pizza.domain.events.PlaceOrderStatusEvent;
+import com.project.pizza.domain.service.CouponedOrderPriceCalculatorService;
 import com.project.pizza.infrastracture.rdb.OrderRepo;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,13 +24,15 @@ public class OrderAppService {
     @PreAuthorize("hasAuthority('CUSTOMER') or hasAuthority('WORKER')")
     public void placeOrder(PlaceOrderCommand pc){
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        var order = new Order(
-                0, pc.getType(), pc.getStatus(), pc.getPrice(), user.getEmail());
 
-        rabbitTemplate.convertAndSend("order-placed.queue",
-                new PlaceOrderStatusEvent(pc.getType(), pc.getStatus()));
+        var couponedOreder =
+                new CouponedOrderPriceCalculatorService()
+                        .couponOrder(new Order(
+                                0, pc.getType(), pc.getStatus(), pc.getPrice(), user.getEmail()));
 
-        orderRepo.save(order);
+    //    rabbitTemplate.convertAndSend("order-placed.queue", new PlaceOrderStatusEvent(pc.getType(), pc.getStatus()));
+
+        orderRepo.save(couponedOreder);
     }
     @PreAuthorize("hasAuthority('CHEF') or hasAuthority('WORKER') or hasAuthority('DELIVERY')")
     public void updateOrderStatus(ChangeOrderStatusCommand cosc){

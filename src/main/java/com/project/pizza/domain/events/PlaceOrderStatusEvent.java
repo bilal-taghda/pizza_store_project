@@ -5,8 +5,8 @@ import com.project.pizza.domain.entity.OrderType;
 import com.project.pizza.domain.valueObject.OrderStatus;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.threeten.bp.LocalDateTime;
 
-import java.time.Instant;
 
 @NoArgsConstructor
 @Getter
@@ -14,7 +14,7 @@ public class PlaceOrderStatusEvent extends Event {
     private OrderType orderType;
     private OrderStatus orderStatus;
     private String eventVersion;
-    private Instant when;
+    private LocalDateTime when;
 
     public PlaceOrderStatusEvent(OrderType orderType, OrderStatus orderStatus) {
         super();
