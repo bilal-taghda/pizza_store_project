@@ -6,7 +6,7 @@ backend for pizza-store built by DDD principles, spring-boot as DI container tha
 , docker-compose to set-up rabbitmq MB, junit-5 to unit-test  business logic, mockito for integration-test repo and controller functions
 
 ## Software features
-- there are 4 user roles: CUSTOMER, WORKER, CHEF, DELIVERY. all can register and GET user account
+- there are 4 user roles: CUSTOMER, WORKER, CHEF, DELIVERY. all can register and GET user-account details
 - CUSTOMER can place order and get his orders infos
 - CHEF can get all orders, change order status to COOKED 
 - WORKER can place order, get all orders, change order status to READY
