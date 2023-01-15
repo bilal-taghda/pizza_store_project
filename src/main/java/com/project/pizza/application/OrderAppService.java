@@ -30,7 +30,8 @@ public class OrderAppService {
                         .couponOrder(new Order(
                                 0, pc.getType(), pc.getStatus(), pc.getPrice(), user.getEmail()));
 
-        rabbitTemplate.convertAndSend("order-placed.queue", new PlaceOrderStatusEvent(pc.getType(), pc.getStatus()));
+       rabbitTemplate.convertAndSend("order-placed.queue"
+               , new PlaceOrderStatusEvent(pc.getType(), pc.getStatus()));
 
         orderRepo.save(couponedOreder);
     }
