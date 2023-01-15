@@ -11,3 +11,16 @@ backend for pizza-store built by DDD principles, spring-boot as DI container tha
 - CHEF can get all orders, change order status to COOKED 
 - WORKER can place order, get all orders, change order status to READY
 - DELIVERY can get all orders, change order status to DELIVERED  
+
+### Order StateChart Diagram
+[scr](images/StatechartDiagram pizza-store.png)
+
+### Order class uml Diagram
+[scr](images/pizza-store class diag.png)
+
+### registering test function
+[scr](images/login_test-function.png)
+
+### placing order function
+[scr](images/placeOrder-function.png)
+
