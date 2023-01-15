@@ -13,10 +13,10 @@ backend for pizza-store built by DDD principles, spring-boot as DI container tha
 - DELIVERY can get all orders, change order status to DELIVERED  
 
 ### Order StateChart Diagram
-[scr](https://github.com/bilal-taghda/pizza_store_project/blob/master/images/StatechartDiagram%20pizza-store.png)
+![scr](https://github.com/bilal-taghda/pizza_store_project/blob/master/images/StatechartDiagram%20pizza-store.png)
 
 ### Order class uml Diagram
-[scr](images/pizza-store class diag.png)
+[scr](https://github.com/bilal-taghda/pizza_store_project/blob/master/images/pizza-store%20class%20diag.png)
 
 ### registering test function
 [scr](images/login_test-function.png)
