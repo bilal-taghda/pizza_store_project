@@ -6,7 +6,7 @@ import com.project.pizza.domain.entity.Address;
 import com.project.pizza.domain.entity.Name;
 import com.project.pizza.domain.entity.Password;
 import com.project.pizza.domain.entity.Role;
-import com.project.pizza.infrastracture.rdb.UserRepo;
+import com.project.pizza.infrastracture.db.UserRepo;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +32,7 @@ public class UserRepoTest {
         entityManager.flush();
 
         // when
-        User userFoundInRepo = userRepo.findUserByEmail(user.getEmail()).orElseThrow();
+        User userFoundInRepo = userRepo.findByEmail(user.getEmail()).orElseThrow();
 
         // then
         Assertions.assertEquals(userFoundInRepo, user);

@@ -1,11 +1,7 @@
 package com.project.pizza.application.security;
 
-import com.project.pizza.infrastracture.rdb.UserRepo;
+import com.project.pizza.infrastracture.db.UserRepo;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.amqp.core.BindingBuilder;
-import org.springframework.amqp.core.Declarables;
-import org.springframework.amqp.core.Queue;
-import org.springframework.amqp.core.TopicExchange;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -26,7 +22,7 @@ public class ApplicationConfig {
 
     @Bean
     public UserDetailsService userDetailsService() {
-        return username -> repository.findUserByEmail(username)
+        return username -> repository.findByEmail(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
     }
 

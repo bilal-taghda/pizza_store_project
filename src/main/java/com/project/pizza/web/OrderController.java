@@ -3,8 +3,7 @@ package com.project.pizza.web;
 
 import com.project.pizza.application.OrderAppService;
 import com.project.pizza.domain.aggregate.Order;
-import com.project.pizza.domain.command.ChangeOrderStatusCommand;
-import com.project.pizza.domain.command.PlaceOrderCommand;
+import com.project.pizza.domain.command.OrderCommand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,12 +16,12 @@ public class OrderController {
     @Autowired private OrderAppService appService;
 
     @PostMapping("/placeOrder")
-    public void placeOrder(@RequestBody PlaceOrderCommand poc){
+    public void placeOrder(@RequestBody OrderCommand poc){
         appService.placeOrder(poc);
     }
 
     @PutMapping("/updateOrderStatus")
-    public void updateOrderStatus(@RequestBody ChangeOrderStatusCommand cosc){
+    public void updateOrderStatus(@RequestBody OrderCommand cosc){
         appService.updateOrderStatus(cosc);
     }
 

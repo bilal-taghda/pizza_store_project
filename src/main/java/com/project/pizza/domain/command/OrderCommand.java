@@ -12,7 +12,8 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-public class PlaceOrderCommand {
+public class OrderCommand {
+    private int id;
     private OrderType type;
     private OrderStatus status;
     private Long price;

@@ -6,7 +6,7 @@ import com.project.pizza.domain.command.LoginCommand;
 import com.project.pizza.domain.entity.Address;
 import com.project.pizza.domain.entity.Name;
 import com.project.pizza.domain.entity.Password;
-import com.project.pizza.infrastracture.rdb.UserRepo;
+import com.project.pizza.infrastracture.db.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -47,12 +47,12 @@ public class UserAppService implements UserDetailsService {
 
     public User getUserDetails(){
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        return userRepo.findUserByEmail(user.getEmail()).orElseThrow();
+        return userRepo.findByEmail(user.getEmail()).orElseThrow();
     }
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        return userRepo.findUserByEmail(email).orElseThrow();
+        return userRepo.findByEmail(email).orElseThrow();
     }
 
 }

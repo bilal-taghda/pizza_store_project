@@ -10,6 +10,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.*;
+import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -21,8 +22,7 @@ import java.util.Collections;
 @Getter
 @Setter
 @ToString
-@Entity
-@Table(name = "users")
+@Document
 public class User implements UserDetails {
     @Id
     private String email;
